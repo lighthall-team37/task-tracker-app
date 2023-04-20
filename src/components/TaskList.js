@@ -16,8 +16,6 @@ const TaskList = () => {
 
     const [modal, setModal] = useState(false);
     const [taskList, setTaskList] = useState([])
-    // console.log("taskList")
-    // console.log(taskList)
 
     const fetchUserName = async () => {
         try {
@@ -47,10 +45,11 @@ const TaskList = () => {
     }
     
     useEffect(() => {
+        if(loading) return;
         if (!user) return navigate("/login");
         fetchUserName();
         fetchTaskList();
-    }, [user])
+    }, [user, loading])
 
 
     const deleteTask = async (id) => {
