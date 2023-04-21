@@ -49,7 +49,7 @@ const TaskList = () => {
     
     useEffect(() => {
         if(loading) return;
-        if (!user) return navigate("/login");
+        if (!user) return navigate("/task-tracker-app/login");
         fetchUserName();
         fetchTaskList();
     }, [user, loading])

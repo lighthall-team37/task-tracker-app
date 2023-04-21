@@ -17,7 +17,7 @@ function Login() {
       // maybe trigger a loading screen
       return;
     }
-    if (user) navigate("/");
+    if (user) navigate("/task-tracker-app");
   }, [user, loading]);
 
   return (
@@ -53,7 +53,7 @@ function Login() {
           </Button>
         </div>
         <div>
-          Don't have an account? <Link to="/signup">Register</Link> now.
+          Don't have an account? <Link to="/task-tracker-app/signup">Register</Link> now.
         </div>
       </div>
     </div>

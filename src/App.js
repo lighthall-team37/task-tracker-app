@@ -11,9 +11,9 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/signup" element={<Register />} />
-          <Route exact path="/" element={<TaskList />} />
+          <Route exact path="/task-tracker-app/login" element={<Login />} />
+          <Route exact path="/task-tracker-app/signup" element={<Register />} />
+          <Route exact path="/task-tracker-app" element={<TaskList />} />
         </Routes>
       </Router>
     </div>

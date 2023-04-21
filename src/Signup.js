@@ -24,7 +24,7 @@ function Register() {
 
   useEffect(() => {
     if (loading) return;
-    if (user) navigate("/");
+    if (user) navigate("/task-tracker-app");
   }, [user, loading]);
 
   return (
@@ -65,7 +65,7 @@ function Register() {
           </Button>
         </div>
         <div>
-          Already have an account? <Link to="/login">Login</Link> now.
+          Already have an account? <Link to="/task-tracker-app/login">Login</Link> now.
         </div>
       </div>
     </div>
