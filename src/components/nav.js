@@ -10,7 +10,7 @@ export default function Navbar () {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar style={{ background: '#626262' }}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Task Tracker
           </Typography>

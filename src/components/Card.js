@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
 import EditTaskPopup from '../modals/UpdateTask'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
 
-const Card = ({taskObj, index, id, deleteTask, updateListArray}) => {
+const TaskCard = ({taskObj, index, id, deleteTask, updateListArray}) => {
     const [modal, setModal] = useState(false);
 
     const colors = [
@@ -40,22 +44,26 @@ const Card = ({taskObj, index, id, deleteTask, updateListArray}) => {
     }
 
     return (
-        <div className = "card-wrapper mr-5">
-            <div className = "card-top" style={{"backgroundColor": colors[index%5].primaryColor}}></div>
-            <div className = "task-holder">
-                <span className = "card-header" style={{"backgroundColor": colors[index%5].secondaryColor, "borderRadius": "10px"}}>{taskObj.name}</span>
-                <p className = "mt-3">{taskObj.date}</p>
-                <p className = "mt-3">{taskObj.description}</p>
-                <p className= 'mt-3'>{taskObj.status}</p>
-
-                <div style={{"position": "absolute", "right" : "20px", "bottom" : "20px"}}>
-                    <i className = "far fa-edit mr-3" style={{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {() => setModal(true)}></i>
-                    <i className="fas fa-trash-alt" style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {handleDelete}></i>
-                </div>
-        </div>
-        <EditTaskPopup modal = {modal} toggle = {toggle} id = {id} updateTask = {updateTask} taskObj = {taskObj}/>
-        </div>
+        <Card sx={{ width: 370}}>
+            <CardActionArea>
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                    {taskObj.name} 
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    Due: {taskObj.date}<br/>
+                    {taskObj.description}<br/>
+                    {taskObj.status}
+                </Typography>
+                    <div style={{"position": "absolute", "right" : "20px", "bottom" : "20px"}}>
+                        <i className = "far fa-edit mr-3" style={{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {() => setModal(true)}></i>
+                        <i className="fas fa-trash-alt" style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {handleDelete}></i>
+                    </div>
+                </CardContent>
+            </CardActionArea>
+            <EditTaskPopup modal = {modal} toggle = {toggle} id = {id} updateTask = {updateTask} taskObj = {taskObj}/>
+        </Card>
     );
 };
 
-export default Card;
+export default TaskCard;

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import CreateTaskPopup from '../modals/CreateTask'
-import Card from './Card';
+import TaskCard from './Card';
 import {auth, db} from '../base'
 import { query, collection, getDocs, where, doc, addDoc, updateDoc, arrayUnion, setDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -106,41 +106,39 @@ const TaskList = () => {
     return (
         <>
             <div className = "header text-center">
-                <h2>{name}'s Tasks </h2>
                 <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Create Task</button>
             </div>
-
             <div className="d-flex justify-content-between">
                 <div className="task-column">
-                    <h3 style={{textAlign: "center"}}>Pending</h3>
+                    <h3 style={{textAlign: "center", color: 'white'}}>Pending</h3>
                     {taskList && taskList
                     .filter(task => task.status === 'Pending')
                     .sort((a, b) => a.name.localeCompare(b.name))
                     .map((obj, index) => (
                         <div key={index} className="mb-2 d-flex flex-column justify-content-center align-items-center">
-                            <Card taskObj={obj} index={index} id={obj.id} deleteTask={deleteTask} updateListArray={updateListArray} />
+                            <TaskCard taskObj={obj} index={index} id={obj.id} deleteTask={deleteTask} updateListArray={updateListArray} />
                         </div>
                     ))}
                 </div>
                 <div className="task-column">
-                    <h3 style={{textAlign: "center"}}>In Progress</h3>
+                    <h3 style={{textAlign: "center", color: 'white'}}>In Progress</h3>
                     {taskList && taskList
                     .filter(task => task.status === 'In Progress')
                     .sort((a, b) => a.name.localeCompare(b.name))
                     .map((obj, index) => (
                         <div key={index} className="mb-2 d-flex flex-column justify-content-center align-items-center">
-                            <Card taskObj={obj} index={index} id={obj.id} deleteTask={deleteTask} updateListArray={updateListArray} />
+                            <TaskCard taskObj={obj} index={index} id={obj.id} deleteTask={deleteTask} updateListArray={updateListArray} />
                         </div>
                     ))}
                 </div>
                 <div className="task-column">
-                    <h3 style={{textAlign: "center"}}>Done</h3>
+                    <h3 style={{textAlign: "center", color: 'white'}}>Done</h3>
                     {taskList && taskList
                     .filter(task => task.status === 'Done')
                     .sort((a, b) => a.name.localeCompare(b.name))
                     .map((obj, index) => (
                         <div key={index} className="mb-2 d-flex flex-column justify-content-center align-items-center">
-                            <Card taskObj={obj} index={index} id={obj.id} deleteTask={deleteTask} updateListArray={updateListArray} />
+                            <TaskCard taskObj={obj} index={index} id={obj.id} deleteTask={deleteTask} updateListArray={updateListArray} />
                         </div>
                     ))}
                 </div>
