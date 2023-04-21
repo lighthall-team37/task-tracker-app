@@ -16,11 +16,22 @@
 }
 
 .header{
-  height: 200px;
+  height: 140px;
   width: 100%;
   /* background-color : #fff; */
   padding-top: 50px;
   color: #fff;
+}
+
+.actions{
+  align-items: center;
+  align-self: center;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2rem;
+  min-width: 100px;
+  padding: .5rem 2rem;
+  width: 70%;
 }
 
 .card-container{

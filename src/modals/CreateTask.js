@@ -22,18 +22,19 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
         const {name, value} = e.target
 
         if(name === "taskName"){
-            setTaskName(value)
-        }else if(name === "description") {
-            setDescription(value)
+            setTaskName(value);
         }
-        else if(name === "dueDate") {
-            setDueDate(value)
+        else if(name === "description") {
+            setDescription(value);
+        }
+        else if(name === "dueDate"){
+            setDueDate(value);
         }
         else if(name === "taskPriority") {
             setTaskPriority(value)
         }
         else {
-            setTaskStatus(value)
+            setTaskStatus(value);
         }
     }
 
