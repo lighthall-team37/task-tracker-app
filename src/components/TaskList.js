@@ -106,7 +106,12 @@ const TaskList = () => {
     return (
         <>
             <div className = "header text-center">
-                <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Create Task</button>
+                <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Create Task</button><br/>
+                <span>Sort by: </span>
+                <select name='taskSorter' id='taskSort'>
+                    <option value="saab">Title</option>
+                    <option value="volvo">Due Date</option>
+                </select>
             </div>
             <div className="d-flex justify-content-between">
                 <div className="task-column">
