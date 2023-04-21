@@ -9,12 +9,12 @@ const EditTaskPopup = ({modal, toggle, id, updateTask, taskObj}) => {
     const [dueDate, setDueDate] = useState('')
 
     const handleChange = (e) => {
+        
         const {name, value} = e.target
 
         if(name === "taskName"){
             setTaskName(value)
-        }
-        else if(name === "description"){
+        }else if(name === "description"){
             setDescription(value)
         }
         else if(name === "dueDate") {
@@ -88,8 +88,8 @@ const EditTaskPopup = ({modal, toggle, id, updateTask, taskObj}) => {
                 </div>
             </ModalBody>
             <ModalFooter>
-                <Button color="primary" onClick={handleUpdate}>Update</Button>{' '}
-                <Button color="secondary" onClick={toggle}>Cancel</Button>
+            <Button color="primary" onClick={handleUpdate}>Update</Button>{' '}
+            <Button color="secondary" onClick={toggle}>Cancel</Button>
             </ModalFooter>
       </Modal>
     );
