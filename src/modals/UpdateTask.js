@@ -5,15 +5,19 @@ const EditTaskPopup = ({modal, toggle, id, updateTask, taskObj}) => {
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
     const [taskStatus, setTaskStatus] = useState('');
+    const [dueDate, setDueDate] = useState('');
 
     const handleChange = (e) => {
-        
         const {name, value} = e.target
 
         if(name === "taskName"){
             setTaskName(value)
-        }else if(name === "description"){
+        }
+        else if(name === "description"){
             setDescription(value)
+        }
+        else if(name === "dueDate"){
+            setDueDate(value);
         }
         else {
             setTaskStatus(value)
@@ -24,6 +28,7 @@ const EditTaskPopup = ({modal, toggle, id, updateTask, taskObj}) => {
         setTaskName(taskObj.name)
         setDescription(taskObj.description)
         setTaskStatus(taskObj.status)
+        setDueDate(taskObj.date)
     },[])
 
     const handleUpdate = (e) => {
@@ -32,6 +37,7 @@ const EditTaskPopup = ({modal, toggle, id, updateTask, taskObj}) => {
         tempObj['name'] = taskName
         tempObj['description'] = description
         tempObj['status'] = taskStatus
+        tempObj['date'] = dueDate
         updateTask(tempObj, id)
     }
 
@@ -39,24 +45,24 @@ const EditTaskPopup = ({modal, toggle, id, updateTask, taskObj}) => {
         <Modal isOpen={modal} toggle={toggle}>
             <ModalHeader toggle={toggle}>Update Task</ModalHeader>
             <ModalBody>
-            
-                    <div className = "form-group">
-                        <label>Task Name</label>
-                        <input type="text" className = "form-control" value = {taskName} onChange = {handleChange} name = "taskName"/>
-                        <label>Description</label>
-                        <textarea rows = "5" className = "form-control" value = {description} onChange = {handleChange} name = "description"></textarea>
-                        <label>Status</label>
-                        <select className="form-control" value={taskStatus} onChange={handleChange} name="taskStatus">
-                            <option value="Pending">Pending</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="Done">Done</option>
-                        </select>
-                    </div>
-                
+                <div className = "form-group">
+                    <label>Task Name</label>
+                    <input type="text" className = "form-control" value = {taskName} onChange = {handleChange} name = "taskName"/>
+                    <label>Description</label>
+                    <textarea rows = "5" className = "form-control" value = {description} onChange = {handleChange} name = "description"></textarea>
+                    <label>Due Date</label>
+                    <input type="date" className = "form-control" value = {dueDate} onChange = {handleChange} name = "dueDate"></input>
+                    <label>Status</label>
+                    <select className="form-control" value={taskStatus} onChange={handleChange} name="taskStatus">
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Done">Done</option>
+                    </select>
+                </div>
             </ModalBody>
             <ModalFooter>
-            <Button color="primary" onClick={handleUpdate}>Update</Button>{' '}
-            <Button color="secondary" onClick={toggle}>Cancel</Button>
+                <Button color="primary" onClick={handleUpdate}>Update</Button>{' '}
+                <Button color="secondary" onClick={toggle}>Cancel</Button>
             </ModalFooter>
       </Modal>
     );

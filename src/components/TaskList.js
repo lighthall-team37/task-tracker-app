@@ -110,7 +110,7 @@ const TaskList = () => {
             </div>
             <div className="d-flex justify-content-between">
                 <div className="task-column">
-                    <h3 style={{textAlign: "center", color: 'white'}}>Pending</h3>
+                    <h3 style={{textAlign: "center", color: 'white'}}>Assigned</h3>
                     {taskList && taskList
                     .filter(task => task.status === 'Pending')
                     .sort((a, b) => a.name.localeCompare(b.name))
