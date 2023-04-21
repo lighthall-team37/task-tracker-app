@@ -214,9 +214,9 @@ const TaskList = () => {
                       .sort((a, b) => {
                         if (sortBy === 'priority') {
                             if (sortOrderPriority === 'asc') {
-                            return new Date(a.priority) - new Date(b.priority);
+                            return a.priority.localeCompare(b.priority);
                             } else {
-                            return new Date(b.priority) - new Date(a.priority);
+                            return b.priority.localeCompare(a.priority);
                             }
                         }
                       })
@@ -254,9 +254,9 @@ const TaskList = () => {
                       .sort((a, b) => {
                         if (sortBy === 'priority') {
                             if (sortOrderPriority === 'asc') {
-                            return new Date(a.priority) - new Date(b.priority);
+                            return a.priority.localeCompare(b.priority);
                             } else {
-                            return new Date(b.priority) - new Date(a.priority);
+                            return b.priority.localeCompare(a.priority);
                             }
                         }
                       })
