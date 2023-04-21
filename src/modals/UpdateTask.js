@@ -5,6 +5,7 @@ const EditTaskPopup = ({modal, toggle, id, updateTask, taskObj}) => {
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
     const [taskStatus, setTaskStatus] = useState('');
+    const [dueDate, setDueDate] = useState('')
 
     const handleChange = (e) => {
         
@@ -15,6 +16,9 @@ const EditTaskPopup = ({modal, toggle, id, updateTask, taskObj}) => {
         }else if(name === "description"){
             setDescription(value)
         }
+        else if(name === "dueDate") {
+            setDueDate(value)
+        }
         else {
             setTaskStatus(value)
         }
@@ -23,6 +27,7 @@ const EditTaskPopup = ({modal, toggle, id, updateTask, taskObj}) => {
     useEffect(() => {
         setTaskName(taskObj.name)
         setDescription(taskObj.description)
+        setDueDate(taskObj.dueDate)
         setTaskStatus(taskObj.status)
     },[])
 
@@ -31,6 +36,7 @@ const EditTaskPopup = ({modal, toggle, id, updateTask, taskObj}) => {
         let tempObj = {}
         tempObj['name'] = taskName
         tempObj['description'] = description
+        taskObj["dueDate"] = dueDate
         tempObj['status'] = taskStatus
         updateTask(tempObj, id)
         toggle();
@@ -46,6 +52,8 @@ const EditTaskPopup = ({modal, toggle, id, updateTask, taskObj}) => {
                         <input type="text" className = "form-control" value = {taskName} onChange = {handleChange} name = "taskName"/>
                         <label>Description</label>
                         <textarea rows = "5" className = "form-control" value = {description} onChange = {handleChange} name = "description"></textarea>
+                        <label>Due Date</label>
+                        <input type="date" className = "form-control" value = {dueDate} onChange = {handleChange} name = "dueDate"></input>
                         <label>Status</label>
                         <select className="form-control" value={taskStatus} onChange={handleChange} name="taskStatus">
                             <option value="Pending">Pending</option>

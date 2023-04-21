@@ -58,6 +58,7 @@ const Card = ({taskObj, index, id, deleteTask, updateListArray}) => {
                     </button>
                     </div>
                 )}
+                <div>Due on {taskObj.dueDate}</div>
                 <div className="mt-auto">
                     <button className="btn btn-secondary mb-2" style={{ backgroundColor: colors[index%5].primaryColor }}>{taskObj.status}</button>
                     <div style={{"position": "absolute", "right": "20px", "bottom": "20px"}}>

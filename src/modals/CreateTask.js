@@ -6,6 +6,7 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
     const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
     const [taskStatus, setTaskStatus] = useState('Pending')
+    const [dueDate, setDueDate] = useState('')
 
     const handleChange = (e) => {
         
@@ -15,6 +16,9 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
             setTaskName(value)
         }else if(name === "description") {
             setDescription(value)
+        }
+        else if(name === "dueDate") {
+            setDueDate(value)
         }
         else {
             setTaskStatus(value)
@@ -27,6 +31,7 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
         taskObj["id"] = uuidv4()
         taskObj["name"] = taskName
         taskObj["description"] = description
+        taskObj["dueDate"] = dueDate
         taskObj["status"] = taskStatus
         save(taskObj)
     }
@@ -43,6 +48,8 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
                     <div className = "form-group">
                         <label>Description</label>
                         <textarea rows = "5" className = "form-control" value = {description} onChange = {handleChange} name = "description"></textarea>
+                        <label>Due Date</label>
+                        <input type="date" className = "form-control" value = {dueDate} onChange = {handleChange} name = "dueDate"></input>
                         <label>Status</label>
                         <select className="form-control" value={taskStatus} onChange={handleChange} name="taskStatus">
                             <option value="Pending">Pending</option>
