@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, logInWithEmailAndPassword } from "./base";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { TextField,Button } from "@mui/material";
 import "./Login.css";
 
 function Login() {
@@ -20,27 +21,33 @@ function Login() {
 
   return (
     <div className="login">
+      <h1>
+        Task Tracker
+      </h1>
       <div className="login__container">
-        <input
-          type="text"
-          className="login__textBox"
+        <TextField
+          required
+          id="outlined-required"
+          label="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
+          margin="normal"
+          onChange={(e) => {setEmail(e.target.value);}}
         />
-        <input
-          type="password"
-          className="login__textBox"
+        <br></br>
+        <TextField
+          required
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          label="Password"
+          margin="normal"
+          onChange={(e) => {setPassword(e.target.value);}}
         />
-        <button
-          className="login__btn"
-          onClick={() => logInWithEmailAndPassword(email, password)}
-        >
-          Login
-        </button>
+        <br/>
+        <br/>
+        <div>
+          <Button variant="contained" color="primary" onClick={() => logInWithEmailAndPassword(email, password)}>
+              Log in
+          </Button>
+        </div>
         <div>
           Don't have an account? <Link to="/signup">Register</Link> now.
         </div>
