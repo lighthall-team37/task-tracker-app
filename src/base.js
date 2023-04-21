@@ -17,14 +17,15 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCFg5GnxEKcfFpM02JxCcttzI99yQcZJYE",
-    authDomain: "tasktrackerapp-3eec4.firebaseapp.com",
-    projectId: "tasktrackerapp-3eec4",
-    storageBucket: "tasktrackerapp-3eec4.appspot.com",
-    messagingSenderId: "599562315998",
-    appId: "1:599562315998:web:7d9c042daa9e07c6b2ba4f",
-    measurementId: "G-CMBKP8KS1D"
-}
+  apiKey: "AIzaSyAFaYhPFFhK4NF08Ez54GJetp5-NiITAkU",
+  authDomain: "tasktrackerapp-80d40.firebaseapp.com",
+  projectId: "tasktrackerapp-80d40",
+  storageBucket: "tasktrackerapp-80d40.appspot.com",
+  messagingSenderId: "899089748696",
+  appId: "1:899089748696:web:44cd508a058a9b44487dad",
+  measurementId: "G-DXP0P3QVD7"
+};
+
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);

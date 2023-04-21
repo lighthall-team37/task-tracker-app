@@ -6,6 +6,7 @@ import {
   registerWithEmailAndPassword,
   logout
 } from "./base";
+import { TextField,Button } from "@mui/material";
 import "./Register.css";
 import NavBar from "./components/NavBar";
 
@@ -13,7 +14,7 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
   const register = () => {
@@ -30,31 +31,39 @@ function Register() {
     <>
     <NavBar user={user} name={user ? user.name: ""} logout={logout}/>
     <div className="register">
+      <h1>
+        Register Here!!!
+      </h1>
       <div className="register__container">
-        <input
+        <TextField
+          required
           type="text"
-          className="register__textBox"
+          label="Your Name"
           value={name}
+          margin="normal"
           onChange={(e) => setName(e.target.value)}
-          placeholder="Full Name"
         />
-        <input
-          type="text"
-          className="register__textBox"
+        <TextField
+          required
+          id="outlined-required"
+          label="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
+          margin="normal"
+          onChange={(e) => {setEmail(e.target.value);}}
         />
-        <input
+        <TextField
+          required
           type="password"
-          className="register__textBox"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          label="Password"
+          margin="normal"
+          onChange={(e) => {setPassword(e.target.value);}}
         />
-        <button className="register__btn" onClick={register}>
-          Register
-        </button>
+        <div>
+          <Button variant="contained" color="primary" onClick={register}>
+              Register
+          </Button>
+        </div>
         <div>
           Already have an account? <Link to="/login">Login</Link> now.
         </div>

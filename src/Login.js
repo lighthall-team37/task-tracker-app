@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, logInWithEmailAndPassword, logout } from "./base";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { TextField,Button } from "@mui/material";
 import "./Login.css";
 import NavBar from "./components/NavBar";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,27 +24,34 @@ function Login() {
     <>
     <NavBar user={user} name={user ? user.name: ""} logout={logout}/>
     <div className="login">
+      <h1>
+        Login Here!!!
+      </h1>
       <div className="login__container">
-        <input
-          type="text"
-          className="login__textBox"
+        <TextField
+          required
+          id="outlined-required"
+          label="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
+          margin="normal"
+          onChange={(e) => {setEmail(e.target.value);}}
         />
-        <input
+        <br></br>
+        <TextField
+          required
           type="password"
-          className="login__textBox"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          label="Password"
+          margin="normal"
+          onChange={(e) => {setPassword(e.target.value);}}
         />
-        <button
-          className="login__btn"
-          onClick={() => logInWithEmailAndPassword(email, password)}
-        >
-          Login
-        </button>
+        <br/>
+        <br/>
+        <div>
+          <Button variant="contained" color="primary" onClick={() => logInWithEmailAndPassword(email, password)}>
+              Log in
+          </Button>
+        </div>
         <div>
           Don't have an account? <Link to="/signup">Register</Link> now.
         </div>
