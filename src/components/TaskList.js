@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import CreateTaskPopup from '../modals/CreateTask'
 import Card from './Card';
-import {auth, db, logout} from '../base'
+import {auth, db} from '../base'
 import { query, collection, getDocs, where, doc, addDoc, updateDoc, arrayUnion, setDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
@@ -106,9 +106,7 @@ const TaskList = () => {
     return (
         <>
             <div className = "header text-center">
-                <h2>Logged in as {name}, {user?.email}</h2>
-                <h3>Todo List</h3>
-                <button className='btn btn-primary mt-2' onClick={logout}>Sign Out</button>
+                <h2>{name}'s Tasks </h2>
                 <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Create Task</button>
             </div>
 
