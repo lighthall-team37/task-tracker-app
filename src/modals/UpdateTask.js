@@ -33,6 +33,7 @@ const EditTaskPopup = ({modal, toggle, id, updateTask, taskObj}) => {
         tempObj['description'] = description
         tempObj['status'] = taskStatus
         updateTask(tempObj, id)
+        toggle();
     }
 
     return (

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, logInWithEmailAndPassword } from "./base";
+import { auth, logInWithEmailAndPassword, logout } from "./base";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./Login.css";
+import NavBar from "./components/NavBar";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -19,6 +20,8 @@ function Login() {
   }, [user, loading]);
 
   return (
+    <>
+    <NavBar user={user} name={user ? user.name: ""} logout={logout}/>
     <div className="login">
       <div className="login__container">
         <input
@@ -46,6 +49,7 @@ function Login() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

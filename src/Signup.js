@@ -4,8 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   auth,
   registerWithEmailAndPassword,
+  logout
 } from "./base";
 import "./Register.css";
+import NavBar from "./components/NavBar";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -25,6 +27,8 @@ function Register() {
   }, [user, loading]);
 
   return (
+    <>
+    <NavBar user={user} name={user ? user.name: ""} logout={logout}/>
     <div className="register">
       <div className="register__container">
         <input
@@ -56,6 +60,7 @@ function Register() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

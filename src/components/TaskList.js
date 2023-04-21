@@ -6,6 +6,7 @@ import { query, collection, getDocs, where, doc, addDoc, updateDoc, arrayUnion, 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { async } from '@firebase/util';
+import NavBar from './NavBar'
 
 const TaskList = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -49,7 +50,7 @@ const TaskList = () => {
         if (!user) return navigate("/login");
         fetchUserName();
         fetchTaskList();
-    }, [user, loading])
+    }, [user, loading, taskList])
 
 
     const deleteTask = async (id) => {
@@ -79,8 +80,9 @@ const TaskList = () => {
         await updateDoc(docRef, {
             taskList: updatedList,
         })
+        setTaskList(updatedList)
 
-        window.location.reload()
+        //window.location.reload()
     }
 
     const toggle = () => {
@@ -104,16 +106,17 @@ const TaskList = () => {
 
     return (
         <>
+            <NavBar user={user} name={name} logout={logout}/>
             <div className = "header text-center">
-                <h2>Logged in as {name}, {user?.email}</h2>
-                <h3>Todo List</h3>
-                <button className='btn btn-primary mt-2' onClick={logout}>Sign Out</button>
-                <button className = "btn btn-primary mt-2" onClick = {() => setModal(true)} >Create Task</button>
+                <button className = "btn btn-dark mt-4" onClick = {() => setModal(true)} >Create Task</button>
             </div>
 
             <div className="d-flex justify-content-between">
                 <div className="task-column">
-                    <h3 style={{textAlign: "center"}}>Pending</h3>
+                    <h3>
+                        Pending
+                        <span className="count-circle">{taskList && taskList.filter(task => task.status === 'Pending').length}</span>
+                    </h3>
                     {taskList && taskList
                     .filter(task => task.status === 'Pending')
                     .sort((a, b) => a.name.localeCompare(b.name))
@@ -124,7 +127,10 @@ const TaskList = () => {
                     ))}
                 </div>
                 <div className="task-column">
-                    <h3 style={{textAlign: "center"}}>In Progress</h3>
+                    <h3>
+                        In Progress
+                        <span className="count-circle">{taskList && taskList.filter(task => task.status === 'In Progress').length}</span>
+                    </h3>
                     {taskList && taskList
                     .filter(task => task.status === 'In Progress')
                     .sort((a, b) => a.name.localeCompare(b.name))
@@ -135,7 +141,10 @@ const TaskList = () => {
                     ))}
                 </div>
                 <div className="task-column">
-                    <h3 style={{textAlign: "center"}}>Done</h3>
+                    <h3>
+                        Done
+                        <span className="count-circle">{taskList && taskList.filter(task => task.status === 'Done').length}</span>
+                    </h3>
                     {taskList && taskList
                     .filter(task => task.status === 'Done')
                     .sort((a, b) => a.name.localeCompare(b.name))
