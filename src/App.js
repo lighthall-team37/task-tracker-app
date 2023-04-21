@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Signup";
 import TaskList from "./components/TaskList";
-import Navbar from './components/nav';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 
@@ -11,12 +10,11 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar />
-          <Routes>
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/signup" element={<Register />} />
-            <Route exact path="/" element={<TaskList />} />
-          </Routes>
+        <Routes>
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Register />} />
+          <Route exact path="/" element={<TaskList />} />
+        </Routes>
       </Router>
     </div>
   );

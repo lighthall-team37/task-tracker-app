@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, logInWithEmailAndPassword } from "./base";
+import { auth, logInWithEmailAndPassword, logout } from "./base";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { TextField,Button } from "@mui/material";
 import "./Login.css";
+import NavBar from "./components/NavBar";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,9 +21,11 @@ function Login() {
   }, [user, loading]);
 
   return (
+    <>
+    <NavBar user={user} name={user ? user.name: ""} logout={logout}/>
     <div className="login">
       <h1>
-        Task Tracker
+        Login Here!!!
       </h1>
       <div className="login__container">
         <TextField
@@ -36,6 +39,7 @@ function Login() {
         <br></br>
         <TextField
           required
+          type="password"
           value={password}
           label="Password"
           margin="normal"
@@ -53,6 +57,7 @@ function Login() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
