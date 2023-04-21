@@ -1,15 +1,22 @@
 import React from "react";
-import "./navbar.css"
 import {logout} from '../base'
-
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 export default function Navbar () {
   return (
-    <nav className="navigation">
-      <div
-        className="navigation-menu" style={{ display: "flex" }}>
-            <button style={{ marginLeft: "auto" }} className='btn btn-primary mt-2' onClick={logout}>Sign Out</button>
-      </div>
-    </nav>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Task Tracker
+          </Typography>
+          <Button onClick={logout} color="inherit">Log Out</Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 };
