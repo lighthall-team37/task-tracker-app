@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/task-tracker-app/static/css/main.efcec98d.css",
-    "main.js": "/task-tracker-app/static/js/main.a45a62f2.js",
+    "main.css": "/task-tracker-app/static/css/main.bfcf3e4a.css",
+    "main.js": "/task-tracker-app/static/js/main.011aff69.js",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/task-tracker-app/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
     "static/media/fontawesome-webfont.eot": "/task-tracker-app/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
     "static/media/fontawesome-webfont.ttf?v=4.7.0": "/task-tracker-app/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
     "static/media/fontawesome-webfont.woff?v=4.7.0": "/task-tracker-app/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/task-tracker-app/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
     "index.html": "/task-tracker-app/index.html",
-    "main.efcec98d.css.map": "/task-tracker-app/static/css/main.efcec98d.css.map",
-    "main.a45a62f2.js.map": "/task-tracker-app/static/js/main.a45a62f2.js.map"
+    "main.bfcf3e4a.css.map": "/task-tracker-app/static/css/main.bfcf3e4a.css.map",
+    "main.011aff69.js.map": "/task-tracker-app/static/js/main.011aff69.js.map"
   },
   "entrypoints": [
-    "static/css/main.efcec98d.css",
-    "static/js/main.a45a62f2.js"
+    "static/css/main.bfcf3e4a.css",
+    "static/js/main.011aff69.js"
   ]
 }
